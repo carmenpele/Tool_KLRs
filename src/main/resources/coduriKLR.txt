@@ -1,0 +1,223 @@
+********* HTVH ************************************************************************
+Length	-4	
+Record Identifier-4-'HTVH'
+Number of Array Items-3
+Delimiter Character-1-'F'
+Level Indicator-2- '00'
+Version Number-2
+
+Arrival Date 8
+Departure Date 8
+Number of Nights 2
+Vendor Code 3
+RoomMaster ID 5 
+Booking Code 7  
+Number of Persons 1
+Token value 10
+Line Number 2
+
+******** HTST ************************************************************************
+Length – 4
+Record Identifier – 4 -HTST
+Number of Array Items- 3
+Delimiter Character -1 F
+Level Indicator – 2- 00
+Version – 2  
+
+- Index Number 3 ->Unique index number associated with a booking code
+- Total Taxes and Surcharges 9 -> Total Taxes and Surcharges for the stay
+- Total Taxes 9
+- Total Surcharges 9
+-Tax break- out Amount Array :
+				- Tax break-out amount 9
+				- Tax description in OTA codes 2  
+							ex: 01 - Bed tax, 15 -State tax
+
+
+******** HTBR ************************************************************************
+Length – 4
+Record Identifier – 4 -HTBR
+Number of Array Items- 3
+Delimiter Character -1 F
+Level Indicator – 2- 00
+Version – 2  
+
+Index Number 3
+Credentials Indicator 1 - Y = Credentials are required
+					    - N = Credential are not required
+Deposit / Guarantee / Prepayment Indicator 1   -D = Deposit required
+											   -G = Guarantee required
+											   -P = Prepayment is required
+Date of Payment Deadline 8 
+Time of Payment Deadline 4
+After Booking/ Before Arrival Indicator 2   -AB = After booking indicator.
+											-BA = Before arrival indicator.
+Units of Time Off-set 6
+Room Hold Expiration Time 4
+Amount of guarantee / deposit / prepayment 9
+
+******** HTRX ************************************************************************
+Length – 4
+Record Identifier – 4 -HTRX
+Number of Array Items- 3
+Delimiter Character -1 F
+Level Indicator – 2- 00
+Version – 2  
+
+Index Number 3
+Commissionable Rate Percentage Value 2 
+Token value 10
+Line Number 3
+
+******** HTRI ************************************************************************
+Length – 4
+Record Identifier – 4 -HTRI
+Number of Array Items- 3
+Delimiter Character -1 F
+Level Indicator – 2- 00
+Version – 2  
+
+Index Number 3
+Rate Category 3
+Commissionable Rate Indicator 1 ->  Y =Commissionable
+									N =Not commissionable
+									D = See HTRX KLR for Commission percentage value
+Smoking Room Indicator 1 -> Y = Smoking,N = Nonsmoking
+View from the Room 2 ->View From The Room expressed in OTA codes.
+Breakfast Indicator 1 -> Y = Breakfast is included,N = Breakfast is not included
+Lunch Indicator 1 -> Y = Lunch is included, N = Lunch is not included
+Dinner indicator 1 -> Y = Dinner is included,N = Dinner is not included
+Meal Plan Array:
+	- Meal Plan 2->  OTA codes.
+
+******** HTMQ ************************************************************************
+Length – 4
+Record Identifier – 4 -HTMQ
+Number of Array Items- 3
+Delimiter Character -1 F
+Level Indicator – 2- 00
+Version – 2  
+
+Index Number 3
+Rate Category Match Indicator 1 ->  Y = This rate is for the requested rate category.
+									N = This rate is not for the requested rate category. The following RC field will contain a substituted rate category.
+Number of Rooms Match Indicator 1 -> Y = The number of rooms requested is available.
+									 N = The number of rooms requested is not available. This number available is listed in the following Number of Rooms field.
+									 M = The number of rooms requested exceeded the maximum allowed. This maximum is listed in the following Number of Rooms field.
+Number of Adults Match Indicator 1 -> Y = This number of adults requested is allowed for the number of rooms requested
+									  N = This number of adults requested is not allowed for the number of rooms requested. The maximum allowed is listed in the following Number of Adults field.
+Number of Children Match Indicator 1 -> Y = This number of children requested is allowed for the number of rooms requested.
+										N = This number of children requested is not allowed for the number of rooms requested. This maximum allowed is listed in the following Number of Children field.
+Bedding Type Match Indicator 1 ->   Y = The number and type of beds requested are available for this rate.
+									N = The number and/or type of beds requested are not available for this rate.
+									S = A substitute has been offered for the originally requested number and/or type of beds.
+Adult Rollaway Match Indicator 1 -> Y = The number of adult rollaways requested are available.
+									N = The number of adult rollaways requested are not available
+Child Rollaways Match Indicator 1 -> Y = The number of child rollaways requested are available.
+									 N = The number of child rollaways requested are not available
+Crib Match Indicator 1 ->   Y = The number of cribs requested are available.
+							N = The number of cribs requested are not available
+Rate Category 3 -> OTA codes
+Number of Rooms 1
+Number of Adults 1
+Number of Children 1
+Bedding Type 3 -> (First 2 characters represent the number of beds.The 3rd character will be as follows:
+						D = Double bed
+						F = Futon
+						K = King
+						M = Murphy bed
+						Q = Queen
+						S = Sofa bed
+						I = Tatami mats
+						T = Twin)
+
+******** HOVI ************************************************************************
+Length – 4
+Record Identifier – 4 -HOVI
+Number of Array Items- 3
+Delimiter Character -1 F
+Level Indicator – 2- 00
+Version – 2  
+
+Guarantee/deposit required ind – 1 G/D/P/blank
+-Rate Comment type Array: 8+1+3+9+1+2=24 each element
+	- Date – 8
+	- frequency -1- A (approximate total)/
+			N (nightly)/
+			P (approximate total plus)/
+			T (total amount per stay)
+	- currency code -3-
+	- amount -9 
+	- nb of decimals for amount -1-      0-3
+	- number of nights -2   01-99
+
+******** HTTR ************************************************************************
+Length – 4
+Record Identifier – 4 -HTTR
+Number of Array Items- 3
+Delimiter Character -1 F
+Level Indicator – 2- 00
+Version – 2  
+
+Type Response Returned 1 -> (List of Possible Values:
+								P = Property List returned
+								S = Similar Name List returned
+								E = Error message returned
+								H = Hotel Travelscreen response
+								R = RoomMaster Response to an HOC Request
+								I = Inside Availability Response to an HOC Request
+								A = Alternate Availability Response to an HOC Request
+								0 = Link sell successful.
+								F = Link sell failed.)
+
+
+******** HTVR ************************************************************************
+Length – 4
+Record Identifier – 4 -HOVI
+Number of Array Items- 3
+Delimiter Character -1 F
+Level Indicator – 2- 00
+Version – 2  
+
+Type Indicator 2 -> Possible Values(List):MS, VR, MI, AD, PH, FX, G3, RD, CC, DP, NO, Z0, 0Z, PT, RE, TR, ND, RI, F0, F1, F2, F3, F4, F5, F6, F7, F8, F9, G0, G1, RA, MQ, TS, TA, SC, TB, TX, EX, EC, RC, CR, CM, SM, RV, ML, MP, NR, NC, BT, CL, DG, CT, GA, GD, GO, GH, GM, NF, XC, XO, XT, XX, XF, XM, XE, XD, XB
+Text Length - 2 
+Variable Text Data - VL
+
+******** HTCP ************************************************************************
+Length – 4
+Record Identifier – 4 -HTCP
+Number of Array Items- 3
+Delimiter Character -1 F
+Level Indicator – 2- 00
+Version – 2  
+
+Index Number 3
+Non-refundable Stay Indicator 1 ->  Y = This IS a "non-refundable" item
+									N = This is NOT a "non-refundable" item. (which means it may be partially or totally refundable). See note in Null Data indicator description below.
+
+Cancellation Date 8 
+Cancellation Time 4
+After Booking/ Before Arrival Indicator 2 -> AB/BA
+Units of Time Off-set 6 
+Tax Indicator 1 ->  Y = Taxes are included
+					N = Taxes are not included
+Fee Indicator 1 ->  Y = Fees are included
+					N = Fees are not included
+Cancellation penalty amount 9 	
+Number of Nights 2
+Penalty Percentage 3
+Cost Qualifier 	VL till the end -> 		Possible Values:"FullStay","Nights" ,"FirstLast".	
+
+******** HTVS ************************************************************************
+Length – 4
+Record Identifier – 4 -HOVI
+Number of Array Items- 3
+Delimiter Character -1 F
+Level Indicator – 2- 00
+Version – 2  
+
+Stored Currency Code 3
+Number of Decimals for Stored Currency 1 
+Alternate Currency Code 3
+Number of Decimals for Alternate Currency Code 1
+Total Number of Items 4
